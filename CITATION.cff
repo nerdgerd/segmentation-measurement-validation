@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this code or its results, please cite them as below."
+title: "Validating generated segmentation variability for radiomic feature selection: code and results"
+type: software
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/nerdgerd/segmentation-measurement-validation"
+abstract: >-
+  Code, locked specifications and feature-level results for the study
+  "Validating generated segmentation variability for radiomic feature selection:
+  correlation, scale and decision agreement". The study compares generated with
+  original-versus-corrected contour variability for 192 geometric MRI features in
+  147 UPENN-GBM and 97 BraTS-TCGA-GBM patients: the correlation of CCC values
+  against a simulated correlation baseline, the magnitude of feature differences
+  and feature selection at five CCC thresholds.
+keywords:
+  - radiomics
+  - feature robustness
+  - segmentation variability
+  - contour perturbation
+  - glioblastoma
+  - concordance correlation coefficient
+  - feature selection
+authors:
+  - given-names: Gerd
+    family-names: Heilemann
+    affiliation: "Department of Radiation Oncology, Medical University of Vienna"
+    orcid: "https://orcid.org/0000-0002-7461-3956"
+  - given-names: Franziska
+    family-names: Eckert
+    affiliation: "Department of Radiation Oncology, Medical University of Vienna"
+    orcid: "https://orcid.org/0000-0002-4742-3962"
+  - given-names: Dietmar
+    family-names: Georg
+    affiliation: "Department of Radiation Oncology, Medical University of Vienna"
+    orcid: "https://orcid.org/0000-0002-8327-3877"
+  - given-names: Lukas
+    family-names: Zimmermann
+    affiliation: "Department of Radiation Oncology, Medical University of Vienna"
+    orcid: "https://orcid.org/0000-0003-0099-2276"

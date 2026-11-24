@@ -1,0 +1,87 @@
+analysis:
+  id: threshold_decision_fidelity_v1
+  date: '2026-09-21'
+  status: review_driven_choices_locked_before_execution
+  authority: docs/14_CODEX_HANDOVER_THRESHOLD_DECISION_EXPERIMENT.md
+  external_preregistration_claim: false
+  investigator_blinding_claim: false
+  base_protocol: config/protocol.lock.yaml
+  base_protocol_sha256: 8139ac7fc83dcba4a345f3b76636bacede3497c3d503d19e32d05d9083504a8d
+  inherited_measurements: true
+  contour_generation_allowed: false
+  image_preprocessing_allowed: false
+  title_change_allowed: false
+workspace:
+  root: redesign2.0
+  run_root: runs
+  descriptor_manifest: audit/audited_descriptor_manifest.csv
+randomness:
+  master_seed: 20260921
+  derivation: sha256_of_canonical_json_array
+  namespace: redesign2_threshold_decision_fidelity_v1
+  streams:
+    threshold_decision_bootstrap: threshold_decision_fidelity_v1_patient_bootstrap
+threshold_decision:
+  thresholds: [0.75, 0.80, 0.85, 0.90, 0.95]
+  retain_rule: ccc_greater_than_or_equal_to_threshold
+  reference_decision: observed_target_reference_decision
+  candidate_methods: [synthetic_target, observed_source]
+  candidate_score_policies:
+    synthetic_target: synthetic_ccc
+    observed_source: source_ccc
+  contrasts:
+    sign: synthetic_minus_source
+    metrics: [jaccard, false_retention_proportion, false_exclusion_proportion, decision_disagreement_rate]
+  analysis_scopes: [full, audit]
+  directions:
+    - {source: upenn, target: brats_tcga, evidence_tier: principal_mri}
+    - {source: brats_tcga, target: upenn, evidence_tier: principal_mri}
+    - {source: nsclc, target: lidc, evidence_tier: exploratory_ct}
+    - {source: lidc, target: nsclc, evidence_tier: exploratory_ct}
+  undefined_ccc_action: mark_cell_undefined_without_replacement
+  ranking_sensitivity:
+    source: existing_evaluation_outputs
+    budget_rule: max_1_floor_J_divided_by_4
+    required_exact_regression: true
+uncertainty:
+  bootstrap_replicates: 2000
+  nominal_level: 0.95
+  range_kind: conditional_bootstrap_sampling_stability_range
+  max_undefined_fraction: 0.05
+  resampling_unit: patient
+  full:
+    source_scores: fixed
+    observed_target_scores: recomputed
+    synthetic_target_scores: recomputed
+    generated_pool: fixed
+  audit:
+    source_scores: fixed
+    synthetic_target_scores: fixed_from_discovery
+    observed_target_scores: recomputed_on_resampled_audit_patients
+reference_selection:
+  ct_rule: minimum_sha256_over_stable_annotation_identifiers
+  geometry_may_influence_selection: false
+  mri_role_must_be_audited: true
+weighting:
+  patient: equal
+  nodule_within_patient: equal
+  alternate_within_nodule: equal
+  synthetic_draw_within_reference: equal
+  moments: normalized_population_form
+  resampling_unit: patient
+  duplicate_synthetic_rows_per_real_reader: false
+reporting:
+  primary_modality: MRI
+  ct_role: exploratory
+  do_not_pool_reciprocal_directions: true
+  no_nominal_p_values: true
+  observed_target_is_not_ground_truth: true
+inputs:
+  inherited_protocol_run_root: runs/8139ac7fc83dcba4a345f3b76636bacede3497c3d503d19e32d05d9083504a8d
+  evaluation_run_pattern: evaluate-{source}-to-{target}-{scope}-unitprecision-v2
+  point_score_table: descriptor_prediction_errors.csv
+  observed_target_point_table: observed_moments.csv
+  prepared_target_measurements:
+    - reference_features.csv
+    - alternate_features.csv
+  full_synthetic_patient_cache: synthetic_patient_moments.csv

@@ -1,0 +1,60 @@
+# Recorded during repository audit, before redesigned target performance.
+resolution_id: redesign2_v1_execution_resolution_20260915
+status: pre_evaluation_specification_completion
+authority: docs/06_LEGACY_REUSE_AND_EXECUTION.md
+
+protocol_commitments:
+  execution_lock: freezes_rules_and_audited_inputs_before_primary_computation
+  construction_lock: separate_full_and_discovery_universe_score_and_selection_hashes
+  evaluation_requires: all_eight_direction_scope_construction_commitments
+
+metadata:
+  cohort_aliases: {tcga: brats_tcga}
+  nsclc_annotation_identity: SEG_SOPInstanceUID_and_segment_number
+  lidc_annotation_identity: original_pylidc_annotation_id
+  missing_nodule_id_for_single_tumour_cohort: use_audited_unit_id
+
+geometry:
+  mri: unchanged_harmonized_1mm_label_partition
+  ct_grid_spacing_mm: [1.0, 1.0, 1.0]
+  ct_grid_origin: native_image_index_origin
+  ct_resampling: linear_signed_distance_interpolation
+  ct_cropping: each_contour_independently_with_global_lattice_offset_retained
+  alternate_contours_may_determine_reference_grid: false
+  reuse_old_ct_descriptor_values_as_primary: false
+  reason: legacy_all_reader_union_crop_reset_origin_and_changed_resampling_phase
+
+numerical:
+  source_quantiles: inverse_weighted_empirical_cdf
+  exact_constant_reference_construction_rank: undefined
+  signed_bias_under_negative_unit_conversion: sign_reverses
+  patient_threshold_applies_to: original_eligible_analysis_scope
+  bootstrap_patient_slots: sampled_with_replacement_preserving_all_units_and_measurements
+  bootstrap_distinct_original_patient_count: diagnostic_only
+  bootstrap_descriptor_universe: fixed_from_construction
+  bootstrap_undefined_score: undefined_affected_statistic_no_fallback
+
+generation:
+  severity_donors: discrete_original_source_pairs_with_hierarchical_probabilities
+  match_algorithm: finite_bisection_with_recorded_tolerance_and_iteration_limit
+  achieved_dice: recomputed_on_the_actual_returned_mask
+  unmatched_severity: retain_returned_mask_and_record_requested_achieved_and_failure
+  interpretation: single_draw_from_the_executed_finite_search_generator
+  fatal_generation_error: block_case_and_dependent_stage
+  substitute_reference_on_failure: false
+  redraw_easier_severity_on_failure: false
+  minimum_weighted_synthetic_availability: 0.90
+  undefined_feature_draws: explicit_conditional_eligible_support_with_original_coverage
+  undefinedness_classification: preserve_structural_absence_numerical_failure_and_missing_file
+  refinement_scopes: [full, discovery]
+  refinement_trigger: any_scope_exceeds_either_locked_score_precision_limit
+  refinement_applies_to: entire_direction_pool
+  refined_storage: ten_batches_of_twenty_draws
+  construction_scores_undefined_in_precision_check: report_separately_do_not_replace_with_zero
+
+reporting:
+  incomplete_unselected_target_battery: utility_allowed_if_all_selected_descriptors_evaluable
+  observed_oracle_regret_and_top_quartile_on_incomplete_battery: undefined
+  finite_rmse_ratio_summary: report_n_finite_and_each_zero_stratum
+  full_cohort_bootstrap: conditional_sampling_stability_range
+  no_target_performance_inspected_for_these_choices: true

@@ -1,0 +1,39 @@
+revision:
+  id: measurement_validation_amendment_v2
+  date: '2026-09-17'
+  accepted_package_commit: 09842086
+  inherited_protocol_sha256: 8139ac7fc83dcba4a345f3b76636bacede3497c3d503d19e32d05d9083504a8d
+  previous_revision_sha256: fb108ad56eff08536f9d89ba739cd7c473d5817e4a5fa425d0f943ab2b914592
+  status: locked_post_analysis_descriptive
+randomness:
+  master_seed: 2026091702
+  namespace: measurement_validation_amendment_v2
+  streams:
+    permutation: complete_dimensionless_disagreement_tuple
+    finite: matched_joint_law_finite_samples
+    split_half: patient_half_rank_reproducibility
+    sensitivity_bootstrap: denominator_definition_patient_bootstrap
+    generic_bootstrap: inherited_G4_patient_bootstrap
+analysis:
+  laws: [additive, biased_proportional, heteroscedastic]
+  theta: [0, 0.9]
+  permutations: 10000
+  finite_datasets: 2000
+  split_half_repetitions: 200
+  bootstrap_replicates: 2000
+  matching_measure: log_disagreement_second_moment_over_reference_mean_squared
+  matching_variance: log_reference_variance_over_reference_mean_squared
+  matching_marginals: [median, interquartile_range]
+  multiplier_grid: [0, 12, 601]
+  matching_absolute_tolerance: 0.000001
+  high_quantile: 0.95
+  coverage_z: 1.959964
+  coverage_adequacy: 0.930
+  max_undefined_fraction: 0.05
+  min_patients: 10
+  min_weighted_support: 0.90
+  generic_fixed_dice: 0.85
+  generic_draws: 100
+  minimum_gain_gap: 0.000000000001
+  sensitivity_budget: floor_remaining_J_divided_by_4_minimum_1
+  missingness: original_explicit_reference_observed_and_synthetic_definedness

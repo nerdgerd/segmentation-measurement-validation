@@ -1,0 +1,37 @@
+revision:
+  id: media_measurement_revision_20260917
+  date: '2026-09-17'
+  status: locked_retrospective_amendment
+  baseline_commit: 38792f99f8a2db1486ce753c218f83502046079b
+  inherited_protocol_sha256: 8139ac7fc83dcba4a345f3b76636bacede3497c3d503d19e32d05d9083504a8d
+  unchanged_estimand: single_random_alternate_contour_equal_patient_unit_measurement_weights
+  unchanged_selections: true
+  unchanged_generator: frozen_Diffuse_source_pair_donor_severity
+  retrospective: true
+  optional_no_paired_data: not_run_no_independently_justified_generic_severity
+randomness:
+  master_seed: 20260917
+  namespace: media_measurement_revision_20260917
+  streams:
+    anchor_check: media_revision_uniform_subset_check
+analysis:
+  mechanism_standardization: reference_variance_over_reference_mean_squared
+  spread: interquartile_range
+  h_formula: IQR_log_standardized_variance_divided_by_2_IQR_g
+  theta: [0, 0.5, 0.9]
+  laws: [additive, biased_proportional, heteroscedastic]
+  display_h_min: 0
+  display_h_max: 3
+  display_h_steps: 61
+  ambiguity_max_absolute_rho_difference: 0.05
+  ambiguity_min_theta_difference: 0.5
+  finite_correspondence_rho_threshold: 0.5
+  uniform_subsets: 20000
+  anchor_denominator_min: 1.0e-12
+  gate_min_utility_bias_sd: 1
+  gate_min_qualifying_utilities_per_cell: 2
+  gate_coverage_max: 0.930
+  central_display_quantiles: [0.05, 0.95]
+  diagnostic_extremes_per_endpoint: 10
+  practical_primary: synthetic_ccc_minus_source_ccc
+  secondary: [error_transport_minus_source_ccc, synthetic_ccc_minus_error_transport]

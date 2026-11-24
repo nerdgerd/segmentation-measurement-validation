@@ -1,0 +1,18 @@
+# Direct computational dependencies used for the verified publication export.
+# Python 3.12.8; the original execution environment is retained under study/config/.
+numpy==2.4.3
+pandas==2.3.3
+scipy==1.17.1
+PyYAML==6.0.3
+matplotlib==3.10.8
+PyMuPDF==1.27.2.2
+pytest==9.0.2
+SimpleITK==2.5.3
+nibabel==5.4.2
+scikit-image==0.26.0
+pydicom==3.0.2
+pylidc==0.2.3
+SQLAlchemy==2.0.48
+threadpoolctl==3.6.0
+pyarrow==25.0.1
+setuptools==80.10.2

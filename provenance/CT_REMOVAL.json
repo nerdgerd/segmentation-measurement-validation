@@ -1,0 +1,485 @@
+{
+  "operation": "CT cohorts removed from the distributed results; MRI records unchanged",
+  "baseline_commit": "c136d96cbd05d7d8d9957a65276265c8c1798f52",
+  "rule": "A CSV record is removed when a cohort column (source, target, template, cohort, direction, source_cohort, target_cohort) names NSCLC or LIDC, or, in descriptor_definition_audit.csv, when its modality is CT. Header and kept records are copied as raw text.",
+  "csv_records": {
+    "study/reference/figure_data/figure2_cell_summaries.csv": {
+      "recorded_sha256": "b27dc04e1761680f19945c48807c54e396282dc46765a870d2d39a412b868bcb",
+      "sha256": "b27dc04e1761680f19945c48807c54e396282dc46765a870d2d39a412b868bcb",
+      "rows": 12,
+      "kept": 12,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/figure_data/figure2_finite_points.csv": {
+      "recorded_sha256": "81acc0e2ce9d82e049ab96bceafae531c9af9c5272c77679aebba503179388fa",
+      "sha256": "81acc0e2ce9d82e049ab96bceafae531c9af9c5272c77679aebba503179388fa",
+      "rows": 24000,
+      "kept": 24000,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/figure_data/figure2_population_points.csv": {
+      "recorded_sha256": "2109e4793c2ad460b7adb9687bf22b9ae1ebf2280060b63b92bee210a3e05aa3",
+      "sha256": "2109e4793c2ad460b7adb9687bf22b9ae1ebf2280060b63b92bee210a3e05aa3",
+      "rows": 2304,
+      "kept": 2304,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/figure_data/figure3_ccc_points.csv": {
+      "recorded_sha256": "2e2340ee81e80945f7cb59b8a77edb18e548d2e6f8755c66b376dfa326c6e8f2",
+      "sha256": "2e2340ee81e80945f7cb59b8a77edb18e548d2e6f8755c66b376dfa326c6e8f2",
+      "rows": 768,
+      "kept": 768,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/figure_data/figure3_rmse_points.csv": {
+      "recorded_sha256": "6a1493eedc266da22c3a13a39dac8e1f5110cff4436cfd7878db903184cc56c5",
+      "sha256": "6a1493eedc266da22c3a13a39dac8e1f5110cff4436cfd7878db903184cc56c5",
+      "rows": 384,
+      "kept": 384,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/figure_data/figure4_threshold_decision_source.csv": {
+      "recorded_sha256": "9aaddb82554798aeac565563e87afada77014cd457c2952f7167e03157ac83d5",
+      "sha256": "9aaddb82554798aeac565563e87afada77014cd457c2952f7167e03157ac83d5",
+      "rows": 120,
+      "kept": 120,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/anchored_utility.csv": {
+      "recorded_sha256": "811590f2a19609a70b5d3e1c08f7eacc117312edc38d477c5fe64e68268784df",
+      "sha256": "f3df8436b6c2794975e91f8f3d326cdc9b8571d1de1beedafe835ed0fb5f8d22",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/bootstrap_definedness_summary.csv": {
+      "recorded_sha256": "b679d02946d450c0385cb5eecb9877d8f84e1b6697be9dda10b377a27c4b0093",
+      "sha256": "2fa0d109abae8572b9cac5912d3d4de5c6699b57e4d4e1f75cdcd0e12e271421",
+      "rows": 64,
+      "kept": 32,
+      "removed": 32
+    },
+    "study/reference/tables/bootstrap_failures.csv": {
+      "recorded_sha256": "58285327cacc72ee1b301e83b666419c2f5e3c38871d9b5fa7e40b7895dd0d4d",
+      "sha256": "4238ff61f370560ffb87d921d59b7d1ea57f9f0072670ded5724f050c7f67ca7",
+      "rows": 16,
+      "kept": 15,
+      "removed": 1
+    },
+    "study/reference/tables/bootstrap_summary.csv": {
+      "recorded_sha256": "f2002be9a76992d4364169d64e15c53589aa22768de697a06c26a7faf4a8e612",
+      "sha256": "79002a315caadec897ea6cbb0872b8fbabb5d462552e444574a7583228e8105c",
+      "rows": 112,
+      "kept": 56,
+      "removed": 56
+    },
+    "study/reference/tables/case_mix_family_region_summary.csv": {
+      "recorded_sha256": "7470b5f6c7261a821d99487ee152d13dc9f0813c0298cc4a07f56d4f061ac380",
+      "sha256": "525657f05c15562de7a158726d2aaca528ba58aa473a1ecd10f34fe2cb775f54",
+      "rows": 228,
+      "kept": 188,
+      "removed": 40,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/case_mix_variance_shift.csv": {
+      "recorded_sha256": "9c32e8651b1686f15ff24062ef24de81f8305236369142f46cdb37cf47c54268",
+      "sha256": "24e059b739818f9e36214930cdcb4e0579ee4dfcff7036c81d737c060821878e",
+      "rows": 919,
+      "kept": 767,
+      "removed": 152,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/case_mix_variance_shift_summary.csv": {
+      "recorded_sha256": "49a6f04ceb79492b4823e3e621abf72390ff8c63f640c91918ee8895ecb35231",
+      "sha256": "ec2f260ec022b9c573dafb7f1cf6544c6837173aaf135659089374d1d38256cb",
+      "rows": 8,
+      "kept": 4,
+      "removed": 4,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/coverage_diagnosis.csv": {
+      "recorded_sha256": "c5a0fef88be677b6a7dbe301cd4b354b8e3dfe547ab09ebcd0daddf4d72e51ca",
+      "sha256": "afaca32ccc73e097be0c399c64986dfe7ca547f1fa570ffca2709d2078ae36ca",
+      "rows": 28,
+      "kept": 14,
+      "removed": 14
+    },
+    "study/reference/tables/coverage_prediction.csv": {
+      "recorded_sha256": "1ef366ec8a5f573c0ae4bb36d0e9a054f2adc8c4d0b0763a4ceb1199d7a776b3",
+      "sha256": "60af2b6c332d8fc1f125d27b5607b7597e4cb0fd097a5317da027275ee8c0680",
+      "rows": 28,
+      "kept": 14,
+      "removed": 14,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/coverage_summary.csv": {
+      "recorded_sha256": "d96fe8a75984ef965523bcb60ef6c287329e5c052aa748512af05568e52e9b51",
+      "sha256": "3f3ee3699ba1d259b136a2f74766dff18ffbe8150be74ccefd49f0eca623a6fb",
+      "rows": 498,
+      "kept": 398,
+      "removed": 100,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/criterion_cutoff_distribution.csv": {
+      "recorded_sha256": "9bb5053c6510cb635c8dea469563110c4955164793d1b4bafec422a4913503f3",
+      "sha256": "1942c3928c882629258b5b8b058d38881ee957af3a49101481cb2f816eb3de51",
+      "rows": 919,
+      "kept": 767,
+      "removed": 152
+    },
+    "study/reference/tables/current_aggregation_descriptor_values.csv": {
+      "recorded_sha256": "9f3206535af6f951eb74e17216918feb2da437249db17e01b80cedb21b33b04d",
+      "sha256": "9f3206535af6f951eb74e17216918feb2da437249db17e01b80cedb21b33b04d",
+      "rows": 1344,
+      "kept": 1344,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/current_aggregation_summary.csv": {
+      "recorded_sha256": "e41c97523c99a67d8bacc7b320d7165d115a6292fdce87ce85b75cfe6c1f04d4",
+      "sha256": "e41c97523c99a67d8bacc7b320d7165d115a6292fdce87ce85b75cfe6c1f04d4",
+      "rows": 14,
+      "kept": 14,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/descriptor_definition_audit.csv": {
+      "recorded_sha256": "d463be872261c5a0dd132677a5543c07ae3c5198c827054b20b87a5e66a5b317",
+      "sha256": "8fd3f81760988a4021eedee67d44a3a59a0eeb78b287db7b5a2705c9356064ed",
+      "rows": 235,
+      "kept": 192,
+      "removed": 43,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/descriptor_disagreement.csv": {
+      "recorded_sha256": "440f6b121a98d6bdbc322a487adbe5343069878c5d6ff81d9078385c1ed56bfb",
+      "sha256": "6abe602575e3aa7cb97f774d7a269363f0ed2f56f644a30ce149f5311760b445",
+      "rows": 919,
+      "kept": 767,
+      "removed": 152,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/descriptor_prediction_errors.csv": {
+      "recorded_sha256": "6c80df9676453346c383344bd6e625950ecac0ad0e648e3525056c24ea6db6e3",
+      "sha256": "94b10766ff829f4cc518d9f489e9909e1490f0f928b408ff75c6ee5ed46f109e",
+      "rows": 2757,
+      "kept": 2301,
+      "removed": 456,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/disagreement_family_summary.csv": {
+      "recorded_sha256": "6eceed9c79897efe3dce73477121fadd13092fe63ea8b9159f1dbc0e5f2d24e8",
+      "sha256": "109743d3d8fe71a98f65db9ae51353604dc042be2ac6db7ce91f6c4c8225fd7d",
+      "rows": 100,
+      "kept": 56,
+      "removed": 44,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/draw_convergence_summary.csv": {
+      "recorded_sha256": "7999c95c0ee45344b4b8e2a51e9598fa7c8293841febfcd8cb722cf3dbd0c5d3",
+      "sha256": "20cfc7fba30f891df5ffae0c4048f47ebde5379ab473bb0bebf0bf004045e240",
+      "rows": 8,
+      "kept": 4,
+      "removed": 4,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/experiment3_ranking_sensitivity_regression.csv": {
+      "recorded_sha256": "1cbac0ed3f3bfa29c2cd02e120096b1146197dbe3f1ffcc21c19e9280758f815",
+      "sha256": "a8832dcb06c2dd46c4c8513ee11ff0fe42cad40697b5d677eb5b4c6da0b2c98c",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12
+    },
+    "study/reference/tables/experiment3_threshold_decision_contrasts.csv": {
+      "recorded_sha256": "c0dc7ae2dd5b21eba9c9b0e3d0c354c5622be7f5f7f1f525614ab59c92fc18e6",
+      "sha256": "586e5d3a21798e3dd274508bcc7c5831192fc5354b88046b2a7c2ea1b82acd38",
+      "rows": 160,
+      "kept": 80,
+      "removed": 80,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/experiment3_threshold_decision_intervals.csv": {
+      "recorded_sha256": "87bd4252ffd97f0fed498c4317ba402fcad875a94e78775227dcaa8624264a79",
+      "sha256": "0931cc5b9bb70e16975fd9a7c957c6d72c56b8a339fdc552e70f9b32bd5f6963",
+      "rows": 880,
+      "kept": 440,
+      "removed": 440,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/experiment3_threshold_decision_metrics.csv": {
+      "recorded_sha256": "8743fb78a5e8a22b6ece163e9ff12ef50dac5e83be69b2cfd06b89b9222ac619",
+      "sha256": "af699fc26415991549f45a8c004fadc7d9f71905ddc745ea85abe3cb4a72a504",
+      "rows": 80,
+      "kept": 40,
+      "removed": 40,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/experiment3_threshold_descriptor_crossings.csv": {
+      "recorded_sha256": "90aefced9d5bbd620fc7939687e5d34f62dece4ad6a6d2b514f7a662374be542",
+      "sha256": "8ba10d44914e75e805fc47ed7c3672764034fa640c92f00579540ae31378baba",
+      "rows": 4595,
+      "kept": 3835,
+      "removed": 760,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/experiment3_threshold_figure_source.csv": {
+      "recorded_sha256": "9aaddb82554798aeac565563e87afada77014cd457c2952f7167e03157ac83d5",
+      "sha256": "9aaddb82554798aeac565563e87afada77014cd457c2952f7167e03157ac83d5",
+      "rows": 120,
+      "kept": 120,
+      "removed": 0,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/finite_mechanism_cells.csv": {
+      "recorded_sha256": "a69e0ec311ee7136d27992f1c98bb095e5671cd3e12d9345e4a58f89acc32937",
+      "sha256": "c37dea1956c34a9d193fc2784edb4108f1ebf0393b783cf46ee74dd08c5f4ee5",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/finite_pool_selection_stability.csv": {
+      "recorded_sha256": "ddbd94ae56d83648eac5936f5896da488940e6a6c7b586baa0500fbb4598ea6b",
+      "sha256": "f3473a6b904445bbf67101568bd771ae86c8fa950e02576b24bd4327355f4c8b",
+      "rows": 8,
+      "kept": 4,
+      "removed": 4,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/generation_cost_and_failures.csv": {
+      "recorded_sha256": "04416607885f07115fd3dfc0cfec12f32ab2f693cb10b123eb0161edff457c57",
+      "sha256": "1853b6fac4853958be395bb7b7eb3a1a913692fd99fb12fb3cab9c14621c37dd",
+      "rows": 4,
+      "kept": 2,
+      "removed": 2,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/matched_finite_summary.csv": {
+      "recorded_sha256": "5381285c7c0112f289982e3555e200ebab16fdc7cd5cc188c7be6c47764c9258",
+      "sha256": "2ebd9718698555e2cff78ca17595d29cbf06bc41a1f78adb2b0c51d0d8cd1c0d",
+      "rows": 48,
+      "kept": 24,
+      "removed": 24,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/matched_population_association.csv": {
+      "recorded_sha256": "1afffa81c5969249d7ee1c006c9a02a78f7f5fe2e24d07f5fd99e12e99165943",
+      "sha256": "3ee27e63de1621c5bf0eb162d64e34e133d93b66bf0d0092f66a322e25881780",
+      "rows": 96,
+      "kept": 48,
+      "removed": 48,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/matched_transport_recovery.csv": {
+      "recorded_sha256": "51e03a195ab1105454fc69f7935d061b1336b646ec695806898d77df8e940621",
+      "sha256": "1b534233b8663eb0942799511796911a5ba6a97d899b6bb93677f6d703225bfc",
+      "rows": 592,
+      "kept": 296,
+      "removed": 296,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/matching_calibration.csv": {
+      "recorded_sha256": "34c3e5cbb835104ed23b99c6c8a59683b55b7db3bd2b1d43884b4154d7325e27",
+      "sha256": "71c333538775335349a53d9f0fcf8ea1995a210e9a7fd85a2f2637c563b106e2",
+      "rows": 192,
+      "kept": 96,
+      "removed": 96,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/permutation_blocks.csv": {
+      "recorded_sha256": "7bfc25ee3b9f185ba0b3d1caed95e30f80634afc55f6ff71cac7f086a2ccfa91",
+      "sha256": "3122d175c7a340aee703273473e4894e80f05129be5221560e486ec38b8aecc9",
+      "rows": 117,
+      "kept": 73,
+      "removed": 44
+    },
+    "study/reference/tables/permutation_summary.csv": {
+      "recorded_sha256": "8163217294ec345c8392a00b63fb283d94ca8ab847602842e38343c92da75957",
+      "sha256": "175b87f618cc14c698bc86aca075f1a8fbb0cf0873d3a66249b01497c4849efc",
+      "rows": 16,
+      "kept": 8,
+      "removed": 8,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/primary_and_contextual_contrasts.csv": {
+      "recorded_sha256": "ea2607e68f43105e24999f9ae5c88b01dbf403689551c0a35ddf388e577da156",
+      "sha256": "bf15f06b2bde233bafe6cdf78fe808ea5dbe1b6f444adb7f91c59eb752b44989",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12
+    },
+    "study/reference/tables/profile_agreement.csv": {
+      "recorded_sha256": "d6f0cfbfd6c70df537579b3dd5c9ce3701eea61dcf2312f4797263dd288a3b5e",
+      "sha256": "fe92565973264416a5e41636c7fcdf09f391a40396a6b9ce6273da03abacd5bf",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/secondary_selection_metrics.csv": {
+      "recorded_sha256": "a3971fd95899f85f32e47b59898c99d541b8ad9894b018a9a653be0d97b4e7d2",
+      "sha256": "77094b4be130a49e4ab24bbf5148ec2a52a9dea83aafe81690865b6711b7357b",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12
+    },
+    "study/reference/tables/selected_set_utility.csv": {
+      "recorded_sha256": "7b58c2cea8b0c7286afb396b279baa67abb65416831f41fbd3818ad1758d55cb",
+      "sha256": "3101665691700b397be645c4879f5589bb1fbd16a6ea450fe39935fd33edbdd5",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/selection_overlap.csv": {
+      "recorded_sha256": "6dd7d502ded4922825acee8453c824b445ca32b0e92a6a82fac898f9e720f3a1",
+      "sha256": "bab7993e4980eaeb02dcde84e9c57e6ca58ba7db478b5af1d4f4991e4199cd5b",
+      "rows": 24,
+      "kept": 12,
+      "removed": 12,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/source_extrapolation.csv": {
+      "recorded_sha256": "e889eca8a2c88993846a511c26ddc690d8c6d5267fd5d813808ce20e7e9d5a8a",
+      "sha256": "b128fdbc02979e847ca8cb8a7f2ec7ea06100a68f4a29534deae6fe6b6c18b05",
+      "rows": 940,
+      "kept": 768,
+      "removed": 172
+    },
+    "study/reference/tables/split_half_summary.csv": {
+      "recorded_sha256": "557f867509df83e3d663e90097567f9542186c907d8dbc921ec7c4809a4d9733",
+      "sha256": "b538ab34b1c551196eab27912f4c7fe52f36e9fb63ae8d59bbddf56ee6bbf020",
+      "rows": 8,
+      "kept": 4,
+      "removed": 4,
+      "identical_to_neuroimage_supplement": true
+    },
+    "study/reference/tables/transport_disagreement_family_summary.csv": {
+      "recorded_sha256": "3a98ebb8394733dcbc049df8551068c664bfe62e670185b77b0daba35c896e01",
+      "sha256": "accfd6f7fb58f01b617ba330a468992299cf6b374a02c7e2d8e4602ce2ebdb42",
+      "rows": 100,
+      "kept": 56,
+      "removed": 44
+    }
+  },
+  "number_macros": {
+    "study/reference/generated/numbers.tex": {
+      "recorded_sha256": "5faeaf94841cc6fbead49c1d45e8056de34d732296602fd349bc28d0ba979230",
+      "sha256": "d419d20b5610c703edb290a6137abbd43b760628448f3c5013b9dd0d9fc6146c",
+      "removed_direction_macros": [
+        "NLFullLog",
+        "NLFullAbsLog",
+        "NLFullDirectMAE",
+        "NLFullDirectRho",
+        "NLFullSyntheticMAE",
+        "NLFullSyntheticRho",
+        "NLFullTransportMAE",
+        "NLFullTransportRho",
+        "NLFullSyntheticDirect",
+        "NLFullSyntheticDirectLower",
+        "NLFullSyntheticDirectUpper",
+        "NLAuditLog",
+        "NLAuditAbsLog",
+        "NLAuditDirectMAE",
+        "NLAuditDirectRho",
+        "NLAuditSyntheticMAE",
+        "NLAuditSyntheticRho",
+        "NLAuditTransportMAE",
+        "NLAuditTransportRho",
+        "NLAuditSyntheticDirect",
+        "NLAuditSyntheticDirectLower",
+        "NLAuditSyntheticDirectUpper",
+        "LNFullLog",
+        "LNFullAbsLog",
+        "LNFullDirectMAE",
+        "LNFullDirectRho",
+        "LNFullSyntheticMAE",
+        "LNFullSyntheticRho",
+        "LNFullTransportMAE",
+        "LNFullTransportRho",
+        "LNFullSyntheticDirect",
+        "LNFullSyntheticDirectLower",
+        "LNFullSyntheticDirectUpper",
+        "LNAuditLog",
+        "LNAuditAbsLog",
+        "LNAuditDirectMAE",
+        "LNAuditDirectRho",
+        "LNAuditSyntheticMAE",
+        "LNAuditSyntheticRho",
+        "LNAuditTransportMAE",
+        "LNAuditTransportRho",
+        "LNAuditSyntheticDirect",
+        "LNAuditSyntheticDirectLower",
+        "LNAuditSyntheticDirectUpper"
+      ],
+      "removed_ct_inclusive_aggregates": {
+        "CoverageFailures": "379 of 498 coverage endpoints; 100 endpoints are CT (NSCLC template)",
+        "CoverageEndpoints": "498 coverage endpoints, 100 of them CT",
+        "FiniteCells": "24 finite simulation cells, 12 of them CT",
+        "UnresolvedPools": "5 unresolved precision pools, 3 of them CT",
+        "TransportContrastMin": "minimum over eight directions/analyses; the minimum is LIDC-to-NSCLC",
+        "TransportContrastMax": "maximum of the same CT-inclusive range"
+      }
+    }
+  },
+  "unchanged_locked_files": {
+    "study/config/": "locked protocol and resolution configurations; their hashes identify the analysis",
+    "study/reference/tables/experiment3_threshold_analysis_spec.json": "locked threshold specification, supplied unchanged with the NeuroImage supplement",
+    "provenance/protocol_notes/": "dated protocol notes, fixed before the analyses they describe"
+  },
+  "new_contour_generation": false,
+  "resampling": false,
+  "model_fitting": false,
+  "script": "redesign2.0/audit/remove_ct_from_publication_repository.py (study repository)",
+  "script_sha256": "a162ed84bdda185541c0ae24d424c0de3267d9b9ac832979261e018bc035fa69",
+  "verification": {
+    "figures_and_plotted_data_identical_to_neuroimage_project": {
+      "figs/figure1_nature.pdf": "c366d4a2acf32f5d728770bc411bd1ca189a97177aa2f29b714579c8346dc2b4",
+      "figs/figure2_mechanism.pdf": "78cec7f1c99583f0fca5027b2992c7804828146a998df3ec29dff3e55cfff256",
+      "figs/figure3_measurement_transfer.pdf": "fe76308f41861a15ba9b66e6ac2fb7dd3531d92ea11f0fa3f6ef84139389dd61",
+      "figs/figure4_selection_utility.pdf": "95e7ed070d209eec7413bc860369f7e0740705343dd66bdbb61b4a763f08cbce",
+      "figs/figure4_threshold_decision_fidelity_continuous.pdf": "9fab2fb834cd59cfd9bd1ed7789a5d59f2d5f8620085b7003a8492f9d7d64934",
+      "figs/figureS2_transport_laws.pdf": "9ff1c8ed6fdbc0dc0016093fe117c698679b02d435bfa91698f6e5c7a22e549b",
+      "figs/figureS3_coverage_diagnosis.pdf": "7617ef9ef61ee7c6bb74d9bab5dd35320bab86dd90c35bca31af7656a51b4fb8",
+      "figs/figureS7_threshold_agreement.pdf": "45a26f12a7bb6b8e709bc676b853bae52aad75987c177af54e7f621d0d6579b6",
+      "figs/figureS7_threshold_decision_counts.pdf": "c0ddfa37fe9294530d366d8e83fcdf063d8c5811eb108ebb15e38d45b4d6b0f5",
+      "figs/figureS_averaging_descriptor_values.pdf": "ce6d1cbdf2dd7b5485201349379fc0dbe1eaf5122931894687e6f0fd2a0e222f",
+      "figs/figureS_complete_fidelity.pdf": "95b98b4716ea7e36ea51a34e01207712f620be2bfc21af6f01e5ae4e100629a2",
+      "figs/figureS_complete_mechanism.pdf": "69aeb586d857d23a22e85636c17721ca299310658abe5b690b2abc777de19e8d",
+      "figure_data/figure2_cell_summaries.csv": "b27dc04e1761680f19945c48807c54e396282dc46765a870d2d39a412b868bcb",
+      "figure_data/figure2_finite_points.csv": "81acc0e2ce9d82e049ab96bceafae531c9af9c5272c77679aebba503179388fa",
+      "figure_data/figure2_population_points.csv": "2109e4793c2ad460b7adb9687bf22b9ae1ebf2280060b63b92bee210a3e05aa3",
+      "figure_data/figure3_ccc_points.csv": "2e2340ee81e80945f7cb59b8a77edb18e548d2e6f8755c66b376dfa326c6e8f2",
+      "figure_data/figure3_rmse_points.csv": "6a1493eedc266da22c3a13a39dac8e1f5110cff4436cfd7878db903184cc56c5",
+      "figure_data/figure4_category_points.csv": "de63eb6b533da2ec167e3fcc954481879adc7bdafb99f88cf6e27d76c362e27a",
+      "figure_data/figure4_rank_scale_points.csv": "1b7b18b0e14f46bdc2b347cd241fb57acbb72c2b6fbb59a2bfa82aa1436b18ec",
+      "figure_data/figure4_scores_and_overlap.csv": "c29bb2af9cd553ec598668e956d5f100267edd1722d813ccb9b3f42419fc410e",
+      "figure_data/figure4_threshold_decision_source.csv": "9aaddb82554798aeac565563e87afada77014cd457c2952f7167e03157ac83d5",
+      "figure_data/figureS_averaging_points.csv": "96b33a2754811271101a4d541f91a871a3809241458279ec8db8a72d154eb799"
+    },
+    "saved_full_threshold_replays_on_mri_rows": {
+      "cleanup-threshold-v1": {
+        "tables": 6,
+        "column_checks": 152,
+        "failures": 0,
+        "compared": "all numerical outputs and metadata except the new storage run_id"
+      },
+      "publication-replay-20261013": {
+        "tables": 6,
+        "column_checks": 152,
+        "failures": 0,
+        "compared": "all numerical outputs and metadata except the new storage run_id"
+      }
+    },
+    "tests": "186 passed",
+    "feature_selection_cells": 40,
+    "finite_rmse_ratios": 767
+  }
+}

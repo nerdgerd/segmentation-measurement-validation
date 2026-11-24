@@ -1,0 +1,23 @@
+{
+  "stage": "threshold_decision_fidelity",
+  "run_id": "threshold-decision-fidelity-v1",
+  "protocol_sha256": "0cb882963d75437cef0d35515f6a835c98a1f8556c72692a8673fb35635e54d4",
+  "estimand": "ccc_threshold_decision_fidelity_relative_to_observed_target_reference_decision",
+  "seeds": {
+    "stream": "threshold_decision_bootstrap",
+    "keys": [
+      "source",
+      "target",
+      "scope"
+    ]
+  },
+  "outputs": {
+    "experiment3_ranking_sensitivity_regression.csv": "1cbac0ed3f3bfa29c2cd02e120096b1146197dbe3f1ffcc21c19e9280758f815",
+    "experiment3_threshold_analysis_spec.json": "fb7403c9aa718450c819f1ba2d347692b8e19b2fdc032eab37a00fd2da619ff3",
+    "experiment3_threshold_decision_contrasts.csv": "c0dc7ae2dd5b21eba9c9b0e3d0c354c5622be7f5f7f1f525614ab59c92fc18e6",
+    "experiment3_threshold_decision_intervals.csv": "87bd4252ffd97f0fed498c4317ba402fcad875a94e78775227dcaa8624264a79",
+    "experiment3_threshold_decision_metrics.csv": "8743fb78a5e8a22b6ece163e9ff12ef50dac5e83be69b2cfd06b89b9222ac619",
+    "experiment3_threshold_descriptor_crossings.csv": "90aefced9d5bbd620fc7939687e5d34f62dece4ad6a6d2b514f7a662374be542",
+    "experiment3_threshold_figure_source.csv": "9aaddb82554798aeac565563e87afada77014cd457c2952f7167e03157ac83d5"
+  }
+}

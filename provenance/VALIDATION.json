@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "baseline_commit": "72ac3c10349159d19122832b9dc0ae0c93309e83",
+  "tests": 186,
+  "figures": 12,
+  "byte_identical_figure_exports": 37,
+  "threshold_replay": {
+    "tables": 6,
+    "column_checks": 152,
+    "failures": 0,
+    "compared": "all numerical outputs and metadata except the new storage run_id"
+  },
+  "reciprocal_audit": {
+    "status": "passed",
+    "checks": 111,
+    "failures": 0
+  },
+  "q2_replayed_features": 919,
+  "interval_endpoints": 64,
+  "bootstrap_guard_records": 128000,
+  "zero_point_diagnostic_features": 919,
+  "reference_variation_strata": 228,
+  "table_comparisons": [
+    {
+      "table": "anchored_utility.csv",
+      "rows": 24,
+      "columns_checked": 33
+    },
+    {
+      "table": "coverage_diagnosis.csv",
+      "rows": 28,
+      "columns_checked": 24
+    },
+    {
+      "table": "case_mix_family_region_summary.csv",
+      "rows": 228,
+      "columns_checked": 18
+    },
+    {
+      "table": "bootstrap_definedness_summary.csv",
+      "rows": 64,
+      "columns_checked": 14
+    }
+  ],
+  "full_contour_generation_rerun": false,
+  "full_matched_finite_rerun": false,
+  "full_known_truth_coverage_rerun": false
+}

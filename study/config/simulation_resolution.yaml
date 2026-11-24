@@ -1,0 +1,79 @@
+# Pre-evaluation completion of the starting simulation specification.
+id: redesign2_v1_simulation_resolution
+date: '2026-09-15'
+status: specification_for_execution_lock
+empirical_values_used: false
+coefficient_battery:
+  fixed_across_finite_patient_replicates: true
+  fixed_across_reference_dispersion_and_target_moment_interventions: true
+  shared_real_and_independent_log_scale_fields_across_theta: true
+  fields_keyed_by_template_type_and_stable_descriptor_or_family_id: true
+  h_one_interpretation: dimensionless_baseline_not_empirical_dispersion_fit
+  population_demo_key: fixed_demonstration_v1
+  numerical_demo_descriptor_count: 12
+  numerical_demo_family_count: 3
+  numerical_demo_role: source_independent_dimensionless_example_not_empirical_template
+population_truth:
+  method: analytical_normal_reference_moments
+  heteroscedastic_residual_second_moment: tau_squared_times_exp_0p6_mean_shift_over_source_sd_plus_0p18_target_variance_over_source_variance
+  source_centering_preserved_in_target: true
+  gaussian_reference_noise_stress: {reference_sd: 0.3, real_sd: 0.5, synthetic_sd: 0.5}
+remedy_grid:
+  reference_log_dispersion_multiplier: 1.0
+  theta: [0.0, 0.5, 0.9]
+  regimes: [additive, biased_proportional, heteroscedastic]
+  target_variance_multipliers: [0.5, 1.0, 2.0]
+  target_mean_shifts_source_sd: [0.0, 1.0]
+  changed_real_law:
+    applied_to_regime: biased_proportional
+    target_variance_multiplier: 2.0
+    target_mean_shift_source_sd: 1.0
+    intercept_increment: 0.5_times_new_family_correlated_normal
+    slope_increment: 0.25_times_tanh_new_family_correlated_normal
+    residual_sd_multiplier: exp_0p5_times_new_family_correlated_normal
+coverage_fixture:
+  role: constrained_known_utility_fixture_separate_from_unconstrained_mechanism_battery
+  population_parameters: duplicate_first_k_parameter_rows_into_second_fixed_set
+  descriptor_residual_fields: retain_distinct_descriptor_ids_and_independent_descriptor_components
+  shared_family_fields: retained
+  fixed_equal_sets: first_k_and_second_k_descriptor_ids
+  higher_set: third_k_descriptor_ids_with_same_parameters_except_half_residual_sd
+  lower_set: fourth_k_descriptor_ids_with_same_parameters_except_double_residual_sd
+  budget: max_1_floor_J_divided_by_4
+  minimum_descriptors: 4
+  remainder_descriptors: retained_but_not_selected_by_coverage_fixture
+  empirical_policy_selection_uses_population_truth: false
+  exact_truth: mean_population_target_ccc_of_each_fixed_set
+  positive_comparison: higher_minus_first
+  negative_comparison: lower_minus_first
+  equal_comparison: second_minus_first
+coverage_reporting:
+  required_cells: [nsclc_additive, nsclc_heteroscedastic, brats_tcga_additive, brats_tcga_heteroscedastic]
+  endpoints: [every_fixed_descriptor_ccc, four_fixed_set_utilities, equal_positive_negative_fixed_set_contrasts]
+  nominal_level: 0.95
+  material_shortfall_rule: estimated_coverage_all_datasets_less_than_0p93
+  unissued_intervals: count_as_coverage_failures_with_conditional_issued_coverage_also_reported
+  monte_carlo_interval: binomial_wilson_95_percent
+  empirical_downgrade_mapping: any_required_endpoint_in_any_required_cell_fails_then_all_independent_audit_intervals_are_sampling_stability_summaries
+  incomplete_audit_action: all_independent_audit_intervals_remain_sampling_stability_summaries_until_required_audit_complete
+  mapping_interpretation: conservative_reporting_rule_not_familywise_significance_test_or_universal_calibration
+  template_specific_coverage_evidence: always_reported
+  original_eligible_patient_gate: before_bootstrap
+  bootstrap_coverage_gate: recompute_original_weighted_support_in_each_patient_resample
+  bootstrap_replicates_with_insufficient_coverage: undefined_not_replaced
+finite_templates:
+  input: audited_patient_nodule_reader_descriptor_family_and_missingness_metadata
+  no_template_if_required_metadata_missing: true
+  no_imputed_reader_nodule_counts_or_feature_family_mapping: true
+  original_patient_eligibility_gate_precedes_bootstrap: true
+  bootstrap_samples_patient_slots_with_multiplicity: true
+  coefficient_and_patient_field_reuse_across_regimes: common_random_numbers_declared
+  finite_summary_battery: retain_all_declared_descriptor_identities_and_report_undefined_counts
+  secondary_partial_iqr_diagnostic: partial_pearson_of_ccc_ranks_residualized_on_intercept_and_weighted_reference_iqr_ranks
+  raw_iqr_role: historical_unit_dependent_diagnostic_only
+  partial_correlation_zero_residual_variance: undefined
+batching:
+  absolute_replicate_identifiers: true
+  resumed_batches_reuse_original_coefficient_battery_and_seed_keys: true
+  overlapping_batches_may_not_be_pooled: true
+  smoke_outputs_enter_final_estimates: false

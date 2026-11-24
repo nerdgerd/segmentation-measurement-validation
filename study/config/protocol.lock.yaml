@@ -1,0 +1,589 @@
+protocol:
+  id: redesign2_v1
+  date: '2026-09-15'
+  status: execution_locked
+  study_type: retrospective_reanalysis_with_new_execution_lock
+  narrative_order:
+  - mechanism
+  - estimand
+  - empirical_transfer
+  - attempted_remedy
+  - practical_consequence
+  new_patient_data: false
+  new_annotations: false
+  full_radiomics: false
+  clinical_outcomes: false
+  primary_feature_scope: existing_geometric_descriptor_universe
+workspace:
+  root: redesign2.0
+  python_package: redesign2
+  source_root: src/redesign2
+  run_root: runs
+  cache_root: cache
+  write_outside_workspace: false
+  legacy_paths_verified: true
+  repository_commit: aa0965b7fb875cb55cfa4c9a945b2f981062e2bc
+  legacy_input_root: C:\Users\standarduser\DeepLearningProjekt\GBM2
+  descriptor_manifest: audit/audited_descriptor_manifest.csv
+  cohort_manifests: audit/contours_metadata.csv
+  environment_lock: config/environment.lock.json
+authorization:
+  new_scientific_design_explicitly_authorized: true
+  supersede_legacy_scientific_freezes_in_this_folder: true
+  preserve_legacy_code_and_outputs: true
+  external_preregistration_claim: false
+  investigator_blinding_claim: false
+randomness:
+  master_seed: 20260915
+  derivation: sha256_of_canonical_json_array
+  namespace: redesign2_v1
+  streams:
+    reference_selection: redesign2_v1_reference_selection
+    target_audit_split: redesign2_v1_target_audit_split
+    smoke: redesign2_v1_smoke
+    population_truth: redesign2_v1_population_truth
+    mechanism_final: redesign2_v1_mechanism_final
+    remedy_final: redesign2_v1_remedy_final
+    interval_audit: redesign2_v1_interval_audit
+    empirical_bootstrap: redesign2_v1_empirical_bootstrap
+    perturbation_fields: redesign2_v1_perturbation_fields
+    severity_donors: redesign2_v1_severity_donors
+  legacy_replay:
+    preserve_original_keys: true
+    original_master_seed: 20260905
+    label_as_legacy_replay: true
+cohorts:
+  upenn:
+    modality: MRI
+    expected_patients_from_handover: 147
+    primary_reference: expert_corrected
+    observed_alternate: corresponding_precursor
+    expected_descriptor_universe: 192
+  brats_tcga:
+    modality: MRI
+    expected_patients_from_handover: 97
+    primary_reference: expert_corrected
+    observed_alternate: corresponding_precursor
+    expected_descriptor_universe: 192
+  nsclc:
+    modality: CT
+    expected_patients_from_handover: 21
+    primary_reference: metadata_hash_selected_annotation
+    observed_alternate: remaining_readers
+    expected_descriptor_universe: 43
+  lidc:
+    modality: CT
+    expected_patients_from_handover: 200
+    expected_nodules_from_handover: 239
+    primary_reference: metadata_hash_selected_annotation
+    observed_alternate: remaining_readers
+    expected_descriptor_universe: 43
+    historical_status: exploratory_addition
+directions:
+- source: upenn
+  target: brats_tcga
+- source: brats_tcga
+  target: upenn
+- source: nsclc
+  target: lidc
+- source: lidc
+  target: nsclc
+reference_selection:
+  ct_rule: minimum_sha256_over_stable_annotation_identifiers
+  geometry_may_influence_selection: false
+  legacy_medoid_role: historical_bridge_only
+  mri_role_must_be_audited: true
+weighting:
+  patient: equal
+  nodule_within_patient: equal
+  alternate_within_nodule: equal
+  synthetic_draw_within_reference: equal
+  moments: normalized_population_form
+  resampling_unit: patient
+  duplicate_synthetic_rows_per_real_reader: false
+features:
+  preserve_existing_definitions_and_units: true
+  min_source_independent_patients: 10
+  min_evaluation_independent_patients: 10
+  min_construction_weighted_availability: 0.9
+  min_evaluation_weighted_support: 0.9
+  construction_requires_all_primary_policy_scores: true
+  target_alternate_based_construction_filter: false
+  impute_undefined_real_ranks: false
+  replace_unevaluable_selected_descriptors: false
+  final_universe_hash_by_direction:
+    status: required_downstream_construction_commitments
+    scopes:
+    - full
+    - discovery
+    evaluation_blocked_until_all_present: true
+  audited_exclusions:
+    MRI: Exclude atlas-location descriptors and manifest sampling-limited harmonic
+      orders above 5; 192 candidates
+    CT: 43 single-region applicable candidates; no old target-rank-based 41-feature
+      exclusion
+synthetic:
+  primary_model: frozen_legacy_diffuse
+  generator_source_and_hash:
+    legacy_source: C:\Users\standarduser\DeepLearningProjekt\GBM2\src\v2\perturb_models.py
+    legacy_sha256: 3703c7dfffa04bf171496183bc1d80d8b0acbcf7850b7b3e2aefddb08d35f2be
+    executed_fork: src/redesign2/adapters/diffuse.py
+    fork_sha256: b73b66be7e7da09f70a2a5b4e2a4237eb4c67c104632dc81c98df224264daeaf
+    fork_reason: explicit arguments without import writes; recompute achieved Dice
+      at actual returned amplitude
+  model_development_overlap_audit:
+    dependency_ledger: data/manifests/development_dependency_ledger.csv
+    sigma_derivation: undocumented_fixed_methodological_constant_no_repository_cohort_fit_detected
+    cohort_independence_audit: external_validation/qc/cohort_independence.json
+    no_claim_of_investigator_blinding_or_independent_MRI_workflow: true
+  severity: source_transported
+  severity_source: weighted_source_reference_alternate_pairs
+  target_pair_dice_allowed: false
+  mri_coherent_multilabel_draw: true
+  mri_severity_region: whole_tumour
+  draw_count_initial: 100
+  storage_batch_count: 5
+  draws_per_initial_batch: 20
+  source_severity_donor_ids_required: true
+  compatible_cache_only: true
+  source_severity_match_tolerance: 0.005
+  convergence:
+    before_target_evaluation: true
+    compare_draw_counts:
+    - 50
+    - 100
+    median_absolute_ccc_change_limit: 0.005
+    p95_absolute_ccc_change_limit: 0.02
+    max_refinement_steps: 1
+    refined_draw_count: 200
+    selection_overlap_reported: true
+    unfavorable_target_result_may_trigger_refinement: false
+estimands:
+  reliability: ccc_single_measurement_moments
+  required_moments:
+  - reference_mean
+  - reference_variance
+  - disagreement_mean
+  - disagreement_variance
+  - reference_disagreement_covariance
+  - disagreement_mse
+  - ccc
+  primary_disagreement_comparison: log2_synthetic_to_observed_rmse_ratio_within_descriptor
+  complementary_disagreement:
+  - standardized_bias_difference
+  - reference_slope_difference
+  reliability_profile_comparison: spearman_across_fixed_descriptor_identities
+  empirical_latent_theta_estimate: false
+  rmse_zero_handling: separate_both_zero_and_one_sided_zero_strata
+  epsilon_in_rmse_ratio: false
+  negative_ccc_clipping: false
+  aggregation_audit_K:
+  - 1
+  - 20
+  - 100
+remedy:
+  id: error_transport
+  source_model: weighted_linear_projection_of_disagreement_on_centered_reference
+  parameters:
+  - source_mean
+  - source_reference_variance
+  - mean_disagreement
+  - slope
+  - residual_variance
+  formula_specification: docs/02_ESTIMANDS_AND_MATHEMATICS.md
+  target_inputs: reference_mean_and_variance_only
+  model_search: false
+  cross_descriptor_pooling: false
+  target_calibration: false
+  residual_variance_negative_roundoff_relative_tolerance: 1.0e-10
+  source_support_quantiles:
+  - 0.01
+  - 0.99
+  extrapolation_diagnostic_only: true
+policies:
+  primary:
+  - source_ccc
+  - synthetic_ccc
+  - error_transport
+  primary_budget_rule: max_1_floor_J_divided_by_4
+  tie_breaker: stable_descriptor_identifier
+  rank_combinations: false
+  raw_iqr_primary_comparator: false
+  primary_utility: mean_observed_target_ccc_of_selected_descriptors
+  primary_contrasts:
+  - - error_transport
+    - source_ccc
+  - - synthetic_ccc
+    - error_transport
+  supporting_contrast:
+  - synthetic_ccc
+  - source_ccc
+  secondary_metrics:
+  - top_quartile_precision
+  - observed_criterion_regret
+  - selection_overlap
+  - family_composition
+  chance_precision: k_divided_by_J
+independent_audit:
+  enabled: true
+  discovery_fraction: 0.5
+  discovery_patient_count_rule: floor_N_divided_by_2
+  assignment: sha256_sorted_patient_identifiers
+  all_patient_units_together: true
+  repeats: 1
+  target_adaptation_uses: discovery_references_only
+  source_fit: fixed_full_source
+  audit_universe_uses_audit_values: false
+  selected_sets_locked_before_audit: true
+  interpretation: performance_of_discovery_sample_screen_on_separate_target_patients
+uncertainty:
+  empirical_bootstrap_replicates: 2000
+  initial_interval: percentile
+  nominal_pointwise_level: 0.95
+  empirical_significance_claims_required: false
+  family_bootstrap: false
+  family_sensitivity: leave_one_family_out
+  full_cohort:
+    source_fits: fixed
+    severity_distribution: fixed
+    generated_pool: fixed
+    target_patients: resampled
+    target_adaptive_rankings: recomputed
+    label: target_sampling_conditional_on_source_and_generated_pool
+    interval_interpretation: central_95_percent_bootstrap_sampling_stability_range
+    population_algorithm_confidence_interval_claim: false
+  independent_audit:
+    source_and_discovery: fixed
+    selections: fixed
+    audit_patients: resampled
+    label: criterion_sampling_conditional_on_constructed_screen
+  max_undefined_bootstrap_fraction_for_nominal_interval: 0.05
+  material_coverage_shortfall: 0.02
+  coverage_failure_action: downgrade_to_sampling_stability_summary
+  latent_null_used_for_utility_test: false
+  old_stage_k_calibration_reused: false
+  ceiling_or_attenuation_correction: false
+simulation:
+  coefficient_law_specification: docs/03_EXPERIMENTS.md
+  dimensionless: true
+  template_source: audited_patient_nodule_reader_feature_family_and_missingness_structure
+  anchor_to_old_target_effect_sizes: false
+  family_latent_variance_fraction: 0.5
+  source_reference_mean: 0.0
+  reference_variance_formula: exp_2_h_g
+  residual_sd_base: 0.5
+  residual_log_sd_coefficient: 0.5
+  bias_coefficient: 0.25
+  slope_tanh_coefficient: 0.25
+  heteroscedastic_log_sd_slope: 0.3
+  theta_definition: population_pearson_correlation_of_gaussian_log_scale_coefficients
+  population_theta_grid:
+  - 0.0
+  - 0.5
+  - 0.9
+  population_reference_log_dispersion_multipliers:
+  - 0.0
+  - 1.0
+  - 1.5
+  finite_theta_grid:
+  - 0.0
+  - 0.5
+  finite_reference_log_dispersion_multipliers:
+  - 1.0
+  core_regimes:
+  - additive
+  - biased_proportional
+  - heteroscedastic
+  smoke_replicates: 100
+  final_mechanism_replicates_per_cell: 2000
+  interval_audit_datasets_per_cell: 1000
+  bootstrap_replicates_per_interval_audit_dataset: 399
+  interval_audit_templates:
+  - nsclc
+  - brats_tcga
+  interval_audit_regimes:
+  - additive
+  - heteroscedastic
+  interval_audit_target: fixed_selection_utility_on_independent_audit_patients
+  population_truth_ccc_error_target: 0.0001
+  remedy_target_reference_variance_multipliers:
+  - 0.5
+  - 1.0
+  - 2.0
+  remedy_target_mean_shift_source_sd:
+  - 0.0
+  - 1.0
+  required_failure_cases:
+  - changed_conditional_disagreement_law
+  - heteroscedastic_case_mix_shift
+  - noisy_reference_interpretation
+  equal_utility_null_definition: distinct_selected_sets_with_equal_known_population_mean_ccc
+  report_monte_carlo_error: true
+reporting:
+  main_evidence_figures_target: 4
+  optional_framework_figure: true
+  all_plotted_values_have_source_tables: true
+  claim_ledger_required: true
+  undefined_and_failed_results_retained: true
+  no_new_results_assumed: true
+  no_medical_image_analysis_acceptance_probability: true
+  no_clinical_utility_claim: true
+  no_anatomical_ground_truth_claim: true
+lock_requirements:
+  all_audit_dependent_null_fields_resolved_or_explicitly_blocked: true
+  required_primary_stage_may_not_execute_when_blocked: true
+  numerical_identity_checks_pass: true
+  information_access_checks_pass: true
+  stable_reference_and_split_manifests: true
+  scientific_choices_fixed_before_redesigned_target_performance: true
+  protocol_hash_required: true
+  post_evaluation_amendments_retained_separately: true
+resolved_metadata:
+  ct_references: runs/d66f91b8e5610f1843649e1c78d7c20ead9490666ebfdcc501799aad768dd87a/metadata-20260915/ct_reference_selection.csv
+  patient_split: runs/d66f91b8e5610f1843649e1c78d7c20ead9490666ebfdcc501799aad768dd87a/metadata-20260915/patient_split.csv
+resolved_generator:
+  sigma_vox: 6.0
+  tolerance: 0.005
+  max_iter: 24
+  amplitude_bracket:
+  - 0.05
+  - 16.0
+  reference_crop_margin_voxels: 12
+execution_resolution:
+  resolution_id: redesign2_v1_execution_resolution_20260915
+  status: pre_evaluation_specification_completion
+  authority: docs/06_LEGACY_REUSE_AND_EXECUTION.md
+  protocol_commitments:
+    execution_lock: freezes_rules_and_audited_inputs_before_primary_computation
+    construction_lock: separate_full_and_discovery_universe_score_and_selection_hashes
+    evaluation_requires: all_eight_direction_scope_construction_commitments
+  metadata:
+    cohort_aliases:
+      tcga: brats_tcga
+    nsclc_annotation_identity: SEG_SOPInstanceUID_and_segment_number
+    lidc_annotation_identity: original_pylidc_annotation_id
+    missing_nodule_id_for_single_tumour_cohort: use_audited_unit_id
+  geometry:
+    mri: unchanged_harmonized_1mm_label_partition
+    ct_grid_spacing_mm:
+    - 1.0
+    - 1.0
+    - 1.0
+    ct_grid_origin: native_image_index_origin
+    ct_resampling: linear_signed_distance_interpolation
+    ct_cropping: each_contour_independently_with_global_lattice_offset_retained
+    alternate_contours_may_determine_reference_grid: false
+    reuse_old_ct_descriptor_values_as_primary: false
+    reason: legacy_all_reader_union_crop_reset_origin_and_changed_resampling_phase
+  numerical:
+    source_quantiles: inverse_weighted_empirical_cdf
+    exact_constant_reference_construction_rank: undefined
+    signed_bias_under_negative_unit_conversion: sign_reverses
+    patient_threshold_applies_to: original_eligible_analysis_scope
+    bootstrap_patient_slots: sampled_with_replacement_preserving_all_units_and_measurements
+    bootstrap_distinct_original_patient_count: diagnostic_only
+    bootstrap_descriptor_universe: fixed_from_construction
+    bootstrap_undefined_score: undefined_affected_statistic_no_fallback
+  generation:
+    severity_donors: discrete_original_source_pairs_with_hierarchical_probabilities
+    match_algorithm: finite_bisection_with_recorded_tolerance_and_iteration_limit
+    achieved_dice: recomputed_on_the_actual_returned_mask
+    unmatched_severity: retain_returned_mask_and_record_requested_achieved_and_failure
+    interpretation: single_draw_from_the_executed_finite_search_generator
+    fatal_generation_error: block_case_and_dependent_stage
+    substitute_reference_on_failure: false
+    redraw_easier_severity_on_failure: false
+    minimum_weighted_synthetic_availability: 0.9
+    undefined_feature_draws: explicit_conditional_eligible_support_with_original_coverage
+    undefinedness_classification: preserve_structural_absence_numerical_failure_and_missing_file
+    refinement_scopes:
+    - full
+    - discovery
+    refinement_trigger: any_scope_exceeds_either_locked_score_precision_limit
+    refinement_applies_to: entire_direction_pool
+    refined_storage: ten_batches_of_twenty_draws
+    construction_scores_undefined_in_precision_check: report_separately_do_not_replace_with_zero
+  reporting:
+    incomplete_unselected_target_battery: utility_allowed_if_all_selected_descriptors_evaluable
+    observed_oracle_regret_and_top_quartile_on_incomplete_battery: undefined
+    finite_rmse_ratio_summary: report_n_finite_and_each_zero_stratum
+    full_cohort_bootstrap: conditional_sampling_stability_range
+    no_target_performance_inspected_for_these_choices: true
+simulation_resolution:
+  id: redesign2_v1_simulation_resolution
+  date: '2026-09-15'
+  status: specification_for_execution_lock
+  empirical_values_used: false
+  coefficient_battery:
+    fixed_across_finite_patient_replicates: true
+    fixed_across_reference_dispersion_and_target_moment_interventions: true
+    shared_real_and_independent_log_scale_fields_across_theta: true
+    fields_keyed_by_template_type_and_stable_descriptor_or_family_id: true
+    h_one_interpretation: dimensionless_baseline_not_empirical_dispersion_fit
+    population_demo_key: fixed_demonstration_v1
+    numerical_demo_descriptor_count: 12
+    numerical_demo_family_count: 3
+    numerical_demo_role: source_independent_dimensionless_example_not_empirical_template
+  population_truth:
+    method: analytical_normal_reference_moments
+    heteroscedastic_residual_second_moment: tau_squared_times_exp_0p6_mean_shift_over_source_sd_plus_0p18_target_variance_over_source_variance
+    source_centering_preserved_in_target: true
+    gaussian_reference_noise_stress:
+      reference_sd: 0.3
+      real_sd: 0.5
+      synthetic_sd: 0.5
+  remedy_grid:
+    reference_log_dispersion_multiplier: 1.0
+    theta:
+    - 0.0
+    - 0.5
+    - 0.9
+    regimes:
+    - additive
+    - biased_proportional
+    - heteroscedastic
+    target_variance_multipliers:
+    - 0.5
+    - 1.0
+    - 2.0
+    target_mean_shifts_source_sd:
+    - 0.0
+    - 1.0
+    changed_real_law:
+      applied_to_regime: biased_proportional
+      target_variance_multiplier: 2.0
+      target_mean_shift_source_sd: 1.0
+      intercept_increment: 0.5_times_new_family_correlated_normal
+      slope_increment: 0.25_times_tanh_new_family_correlated_normal
+      residual_sd_multiplier: exp_0p5_times_new_family_correlated_normal
+  coverage_fixture:
+    role: constrained_known_utility_fixture_separate_from_unconstrained_mechanism_battery
+    population_parameters: duplicate_first_k_parameter_rows_into_second_fixed_set
+    descriptor_residual_fields: retain_distinct_descriptor_ids_and_independent_descriptor_components
+    shared_family_fields: retained
+    fixed_equal_sets: first_k_and_second_k_descriptor_ids
+    higher_set: third_k_descriptor_ids_with_same_parameters_except_half_residual_sd
+    lower_set: fourth_k_descriptor_ids_with_same_parameters_except_double_residual_sd
+    budget: max_1_floor_J_divided_by_4
+    minimum_descriptors: 4
+    remainder_descriptors: retained_but_not_selected_by_coverage_fixture
+    empirical_policy_selection_uses_population_truth: false
+    exact_truth: mean_population_target_ccc_of_each_fixed_set
+    positive_comparison: higher_minus_first
+    negative_comparison: lower_minus_first
+    equal_comparison: second_minus_first
+  coverage_reporting:
+    required_cells:
+    - nsclc_additive
+    - nsclc_heteroscedastic
+    - brats_tcga_additive
+    - brats_tcga_heteroscedastic
+    endpoints:
+    - every_fixed_descriptor_ccc
+    - four_fixed_set_utilities
+    - equal_positive_negative_fixed_set_contrasts
+    nominal_level: 0.95
+    material_shortfall_rule: estimated_coverage_all_datasets_less_than_0p93
+    unissued_intervals: count_as_coverage_failures_with_conditional_issued_coverage_also_reported
+    monte_carlo_interval: binomial_wilson_95_percent
+    empirical_downgrade_mapping: any_required_endpoint_in_any_required_cell_fails_then_all_independent_audit_intervals_are_sampling_stability_summaries
+    incomplete_audit_action: all_independent_audit_intervals_remain_sampling_stability_summaries_until_required_audit_complete
+    mapping_interpretation: conservative_reporting_rule_not_familywise_significance_test_or_universal_calibration
+    template_specific_coverage_evidence: always_reported
+    original_eligible_patient_gate: before_bootstrap
+    bootstrap_coverage_gate: recompute_original_weighted_support_in_each_patient_resample
+    bootstrap_replicates_with_insufficient_coverage: undefined_not_replaced
+  finite_templates:
+    input: audited_patient_nodule_reader_descriptor_family_and_missingness_metadata
+    no_template_if_required_metadata_missing: true
+    no_imputed_reader_nodule_counts_or_feature_family_mapping: true
+    original_patient_eligibility_gate_precedes_bootstrap: true
+    bootstrap_samples_patient_slots_with_multiplicity: true
+    coefficient_and_patient_field_reuse_across_regimes: common_random_numbers_declared
+    finite_summary_battery: retain_all_declared_descriptor_identities_and_report_undefined_counts
+    secondary_partial_iqr_diagnostic: partial_pearson_of_ccc_ranks_residualized_on_intercept_and_weighted_reference_iqr_ranks
+    raw_iqr_role: historical_unit_dependent_diagnostic_only
+    partial_correlation_zero_residual_variance: undefined
+  batching:
+    absolute_replicate_identifiers: true
+    resumed_batches_reuse_original_coefficient_battery_and_seed_keys: true
+    overlapping_batches_may_not_be_pooled: true
+    smoke_outputs_enter_final_estimates: false
+actual_cohort_structure:
+  lidc:
+    patients: 200
+    reference_units: 239
+  nsclc:
+    patients: 21
+    reference_units: 21
+  brats_tcga:
+    patients: 97
+    reference_units: 97
+  upenn:
+    patients: 147
+    reference_units: 147
+lock_validation:
+  report: audit/lock_validation.txt
+  sha256: 3e86d28c3dbd9a427184f692f0eee0ee5379a3bf4b6c973957697aa3e843113a
+  source_state_at_validation:
+    commit: aa0965b7fb875cb55cfa4c9a945b2f981062e2bc
+    tracked_dirty_patch_sha256: 6a701375d74f937ffd58901fbc68569637155bb05c378dab910a0d4762aa7dcc
+    status:
+    - ' M docs/HANDOVER.md'
+    - ?? .claude/
+    - ?? redesign2.0/
+    workspace_source_hashes:
+      src/redesign2/__init__.py: 8188cce6992a0c3ae84c9f805cdc6b376407d077bbf83ff0040764cd684c37be
+      src/redesign2/__main__.py: 935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d
+      src/redesign2/access.py: 7fc2272787a8356e246239ee37eabbff998494d1d700c3dfd045209de8b6b693
+      src/redesign2/adapters/__init__.py: 54f92cef6b751e9c4e6fc07cb7cbae3880009a3db5fc2bcc9d2d35b8e3f9f450
+      src/redesign2/adapters/descriptors.py: d58d167544c418cc0c6e34fa78441d16099df629929bf82edf54d84b1dca475b
+      src/redesign2/adapters/diffuse.py: b73b66be7e7da09f70a2a5b4e2a4237eb4c67c104632dc81c98df224264daeaf
+      src/redesign2/adapters/features_extended.py: 80a2138ee4bbfd19b3b59f7216cef7589c99f2b8d59bafef6fec3a07eefe8e27
+      src/redesign2/adapters/masks.py: 6235055ac7468347ba01ac5b25cf12af62d3c9de8d56da632d77c922b5723250
+      src/redesign2/adapters/prepare.py: 603f2d35eae721656a83e695391075bf3bc91cb467e4c1390ba26dcd6ab6a49e
+      src/redesign2/adapters/shape_features.py: 1cbd7d9368284d89932a40b78a1bfeb4e8c8e9bbbd4596fdbdb3e1a0d06fd84e
+      src/redesign2/audit.py: 7cd782c7bb5d14d7cf7ecfe0dc92a0aa7904d1562ee51f624eb060b7a78032d6
+      src/redesign2/cli.py: f713c9cf6fe2f9cb6296e7bc2722ec419f32cd270824f102406768815a4deca9
+      src/redesign2/commitments.py: 1e3151431506e4fb35578bea2af7ab3920c76fec6b8f3b30f30281eb4dfc9a30
+      src/redesign2/empirical_math.py: 524d206918abecee25d31c07c669b101352739b7a4600e56f82a8d4d22dca349
+      src/redesign2/generate.py: 4108b6c97a3d3d2eec5c060267c601707e204766b08f794619ff890bd1fbfd17
+      src/redesign2/locking.py: 69e801fafb8474c491c3ff2c86ff70dcc2d4cfc54b42eae30fa3c249de8a283c
+      src/redesign2/metadata.py: b0fa78ecaca37570176eed14374311f2ca3e9fe11af64a6de9bb2a68f5afd3a7
+      src/redesign2/moments.py: 6f37f97eba7e53026ca80ef5e23d4ffe0c43ea9ffeeffb71a41fd6716fe11e4d
+      src/redesign2/policies.py: 597c010f63e506e2a0a4ca45513282434769e15293a147aff6b902c131790966
+      src/redesign2/prepare_inputs.py: b2c706d6b284b3d34cf87ac992e45a8c94a57bc9a52c2d5897df5b875ed51b53
+      src/redesign2/provenance.py: e62e30333498e00b842cb7297712cf40ec68741cbd87f8cdb8ba7f46d00fcbdd
+      src/redesign2/simulation.py: fa7df51317c66c7933ab59373da43558fd5a7d215d780c757377c8249af42992
+      src/redesign2/simulation_driver.py: cf59edb37c23695a238915c5ddc9dc504aa85368acfd69a74c0857f10f9544bf
+      src/redesign2/simulation_repetitions.py: dfac2f07b722f568def1bc3a0baa5b84fa87340e96f405b36d76e0949dbab654
+      src/redesign2/transport.py: f6de8636417d10bc8bcadf0baa6d416cd4ab757f7b044ea2911b05143e254bbb
+      src/redesign2/uncertainty.py: dbe501a95297d0e295edb0db136853bbc6025199d7391c1763a4046f47c57c93
+      tests/test_adapters.py: 79cef003e1d7c6231cd731eafa829c5d3cf1980a6a5e95974ac66c9734049f1f
+      tests/test_commitments.py: 4a609b489ec966bc93009692c7fe239ee35d9764cc7b55050bb3d5dade729e83
+      tests/test_contracts.py: 2491f338aa30b77e18f728ccddc1eb01b6bf8c8d222f16245cc93a686ac7cb5a
+      tests/test_empirical_math.py: 17d8b5d8982b352ae3526c1c14509ec4bee22e55832bdf778c62b121a7cc7a05
+      tests/test_moments.py: 4dc362cf7efa018773491013c99118d2c1edef9187fe331d3c616fb60bfe65fd
+      tests/test_policies.py: fd6ad63dd978715f0b4b0f9083067913f0c0238a211a54493d50c4e49bbefd2d
+      tests/test_provenance.py: 5a91c6f5ea43c2ad29fbe8c81f12dbec35912fa01a51dba54e316616f47f3add
+      tests/test_simulation.py: 9ce06c3df6d9ca8ed2c1d8a863ea3b603001841fed5779dc9c3554ab4b5b07c4
+      tests/test_simulation_repetitions.py: daf5c4a4770875f853185fe915a8233fb481d81273441b653a7a13dbf84dba57
+      tests/test_transport.py: bf70d97ec67eb47fdd36acc2515e3f90056a19c0855fda03ebe05ca30864d314
+      tests/test_uncertainty.py: d2d51d33d1aef0e1914fb9f4a637e28be2e2efb1527afcf85862f13a5e5a1548
+      pyproject.toml: d0892177bb49c18cd283577513da7ee837bf4187a7673a29ccb2348bc59acffd
+    workspace_source_sha256: 140461e72f9a8f091611495e02dec6096049a2c2ac63929d663095538a259f0b
+  smoke_run: runs/d66f91b8e5610f1843649e1c78d7c20ead9490666ebfdcc501799aad768dd87a/numerical-smoke-lock-20260915
+  target_performance_inspected: false
+resolved_inputs:
+  config/protocol.yaml: 241fc0d812627b0a63f6b8b980c20289e5becfa13bf7ee6fd1e16721098635e9
+  config/execution_resolution.yaml: c0669f7a77a69f159559e309b000c65326e577313f17457cea804617b5ef5382
+  config/simulation_resolution.yaml: 32bc41693e44eed1083c03c799e1158a7d2fab703ec7a7c6b2aa5b4250eca499
+  config/environment.lock.json: 79b1f001eb88068dd1946d671a3fab7a6e36fb1ac8a7ebf823a057bb8164ee45
+  audit/subjects_metadata.csv: 187d35b89d7452915133996ec1fad31317417f584ca13e86e3db2b09cb8edd91
+  audit/contours_metadata.csv: 9f61206e81cf798645c0328a9c77672345ce4794fe70b8c5fe076e617120c987
+  audit/audited_descriptor_manifest.csv: 30508edc508f3bc249a8e997fad91b788c56113530136e013e6dd403a6ce3c58
+  audit/asset_facts.json: 7678936d02c573c1ee8b8bcf4a75525c7e35b6570105ef94ad3f4ecfa367970f
+  runs/d66f91b8e5610f1843649e1c78d7c20ead9490666ebfdcc501799aad768dd87a/metadata-20260915/ct_reference_selection.csv: f196422a93171047c57d5d1093508c57529b954bb9ab1ff2e9398fbbc870d46d
+  runs/d66f91b8e5610f1843649e1c78d7c20ead9490666ebfdcc501799aad768dd87a/metadata-20260915/patient_split.csv: 8ecbb62baaf658732cd3cf1d3c055c508a173241406d0a2e7f50ddb86ee7c2f9
+  C:\Users\standarduser\DeepLearningProjekt\GBM2\src\v2\perturb_models.py: 3703c7dfffa04bf171496183bc1d80d8b0acbcf7850b7b3e2aefddb08d35f2be
+  src/redesign2/adapters/diffuse.py: b73b66be7e7da09f70a2a5b4e2a4237eb4c67c104632dc81c98df224264daeaf

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "segmentation-measurement-validation"
+version = "1.0.0"
+description = "Validating generated segmentation variability for radiomic feature selection"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Gerd Heilemann" },
+    { name = "Franziska Eckert" },
+    { name = "Dietmar Georg" },
+    { name = "Lukas Zimmermann" },
+]
+requires-python = ">=3.12"
+dependencies = ["numpy", "pandas", "scipy", "PyYAML", "matplotlib", "threadpoolctl", "PyMuPDF"]
+
+[project.optional-dependencies]
+imaging = ["SimpleITK", "nibabel", "pydicom", "pylidc", "scikit-image", "sqlalchemy"]
+test = ["pytest", "pyarrow"]
+
+[tool.setuptools.packages.find]
+where = ["study/src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["study/src", "."]
+testpaths = ["study/tests"]
+cache_dir = "study/cache/pytest"
